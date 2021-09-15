@@ -51,4 +51,4 @@ function GetConeVolumeByHAndAngle(h, angle)
 end
 
 -- 练习3.7：利用函数math.random编写一个生成遵循正态分布（高斯分布）的伪随机数发生器。
--- 说实话，这个题有点超纲
+-- 说实话，这个题有点超纲，等研究懂了之后再来补充
