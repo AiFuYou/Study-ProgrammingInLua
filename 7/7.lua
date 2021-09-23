@@ -177,7 +177,7 @@ end
 -- 练习7.6：使用函数os.execute和io.popen，分别编写用于创建目录、删除目录和输出目录内容的函数。
 
 function isWindows()
-	return package.config[1] == "\\"
+	return package.config:sub(1, 1) == "\\"
 end
 
 -- 使用函数os.execute
@@ -215,9 +215,9 @@ function createDir2(dir)
 end
 
 function removeDir2(dir)
+    print(dir, "是否确认删除(Y/N)?")
     local f = io.popen((isWindows() and "rmdir /s " or "rm -rf ") .. dir, "r")
     if f then
-        print(f:read("a"))
         f:close()
     end
 end
