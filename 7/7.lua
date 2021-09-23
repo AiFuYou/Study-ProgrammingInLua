@@ -176,17 +176,29 @@ end
 
 -- 练习7.6：使用函数os.execute和io.popen，分别编写用于创建目录、删除目录和输出目录内容的函数。
 
+function isWindows()
+	return package.config[1] == "\\"
+end
+
 -- 使用函数os.execute
 function createDir(dir)
     os.execute("mkdir " .. dir)
 end
 
 function removeDir(dir)
-    os.execute("rmdir /s " .. dir)
+	if isWindows() then
+		os.execute("rmdir /s " .. dir)
+	else
+		os.execute("rm -rf " .. dir)
+	end
 end
 
 function lsDir(dir)
-    os.execute("dir " .. dir)
+	if isWindows() then
+		os.execute("dir " .. dir)
+	else
+		os.execute("ls " .. dir)
+	end
 end
 
 -- createDir("test_7_6")
@@ -203,7 +215,7 @@ function createDir2(dir)
 end
 
 function removeDir2(dir)
-    local f = io.popen("rmdir /s " .. dir, "r")
+    local f = io.popen((isWindows() and "rmdir /s " or "rm -rf ") .. dir, "r")
     if f then
         print(f:read("a"))
         f:close()
@@ -211,7 +223,7 @@ function removeDir2(dir)
 end
 
 function lsDir2(dir)
-    local f = io.popen("dir " .. dir, "r")
+    local f = io.popen((isWindows() and "dir " or "ls ") .. dir, "r")
     if f then
         print(f:read("a"))
         f:close()
@@ -227,7 +239,8 @@ end
 -- 获取到当前文件的位置，调用系统命令将文件移动到目标位置即可
 
 function changeDir(dstDir)
-    os.execute("move " .. arg[0] .. " " .. dstDir)
+	createDir(dstDir)
+    os.execute((isWindows() and "move " or "mv ") .. arg[0] .. " " .. dstDir)
 end
 
 -- changeDir("testChangeDir")
