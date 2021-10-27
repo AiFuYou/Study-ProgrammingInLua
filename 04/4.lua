@@ -98,7 +98,6 @@ print(ispaliexceptxxx2("123.,:'\"!?[ ]321"))
 
 -- 练习4.9：使用UTF-8字符串重写之前的练习
 
-function usf8ispali(s)
     local oT = {}
     for i,v in utf8.codes(s) do
         table.insert(oT, v)
