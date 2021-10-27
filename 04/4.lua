@@ -98,6 +98,7 @@ print(ispaliexceptxxx2("123.,:'\"!?[ ]321"))
 
 -- 练习4.9：使用UTF-8字符串重写之前的练习
 
+function utf8ispali(s)
     local oT = {}
     for i,v in utf8.codes(s) do
         table.insert(oT, v)
@@ -112,7 +113,7 @@ print(ispaliexceptxxx2("123.,:'\"!?[ ]321"))
     return utf8.char(table.unpack(nT)) == s
 end
 
-print("açãooãça", usf8ispali("açãooãça"))
-print("açãooãça1", usf8ispali("açãooãça1"))
-print("我爱国，国爱我", usf8ispali("我爱国，国爱我"))
-print("我爱中国，中国爱我", usf8ispali("我爱中国，中国爱我"))
+print("açãooãça", utf8ispali("açãooãça"))
+print("açãooãça1", utf8ispali("açãooãça1"))
+print("我爱国，国爱我", utf8ispali("我爱国，国爱我"))
+print("我爱中国，中国爱我", utf8ispali("我爱中国，中国爱我"))
