@@ -116,7 +116,7 @@ function serialize_153(o, n)
 	end
 end
 
--- serialize_153(tt)
+ --serialize_153(tt)
 
 --练习15.5：在保存具有循环的表时，避免使用构造器的方法过于激进了。对于简单的情况，是能够使用表构造器以一种更加优雅的方式来保存表的，
 --并且也能够在后续使用赋值语句来修复共享表和循环。请使用这种方式重新实现函数save（示例15.3），其中要运用前面练习中的所有优点（缩进、记录式语法及列表式语法）。
@@ -153,6 +153,6 @@ function serialize_154(o, n, saved)
 	end
 end
 
-serialize_154(tt)
+--serialize_154(tt)
 
 
